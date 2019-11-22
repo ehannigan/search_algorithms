@@ -6,6 +6,7 @@ from dijkstras import Graph
 class TestDijkstras(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        # graph taken from: https://www.youtube.com/watch?v=pVfj6mxhdMw
         vertices = {'A', 'B', 'C', 'D', 'E'}
         cls.graph = Graph(vertices)
         cls.graph.add_undirected_edge('A', 'B', 6)
@@ -19,9 +20,8 @@ class TestDijkstras(unittest.TestCase):
     def test_run_dijkstras(self):
         dijkstras = DijkstrasAlgorithm()
         dijkstras.run(self.graph, 'A')
-
-
-
+        shortest_path = dijkstras.get_shortest_path('C')
+        self.assertTrue(shortest_path == ['A', 'D', 'E', 'C'])
 
 if __name__ == '__main__':
     unittest.main()
